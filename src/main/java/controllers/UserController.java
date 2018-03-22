@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import repositories.UserRepository;
+import services.UserService;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -17,6 +18,11 @@ import java.util.Optional;
 @RequestMapping(value = "/user")
 public class UserController {
 
+    private UserService userService;
+
+
+
+    /*
     @Autowired
     private UserRepository userRepository;
 
@@ -37,5 +43,5 @@ public class UserController {
     public Optional<User> findUserById(@PathVariable(value = "id") Integer id){
         return userRepository.findById(id);
     }
-
+    */
 }
