@@ -28,4 +28,8 @@ public class UserServiceImpl implements UserService {
         return userRepository.findById(id);
     }
 
+    public void delete(@PathVariable(value = "id") Integer id){
+        userRepository.deleteById(id);
+    }
+
 }
