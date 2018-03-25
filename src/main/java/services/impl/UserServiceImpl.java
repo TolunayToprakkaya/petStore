@@ -20,7 +20,7 @@ public class UserServiceImpl implements UserService {
         return userRepository.findAll();
     }
 
-    public User save(@Valid @RequestBody User user){
+    public User save(User user){
         return userRepository.save(user);
     }
 
