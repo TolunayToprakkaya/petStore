@@ -18,4 +18,9 @@ public class UserController {
     @Qualifier("userService")
     private UserService userService;
 
+
+    @RequestMapping(value = "")
+    public void findAll(){
+        //userService.findAll();
+    }
 }
