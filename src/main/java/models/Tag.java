@@ -3,7 +3,7 @@ package models;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "tag")
+@Table(name = "T_TAG")
 public class Tag {
 
     @Id

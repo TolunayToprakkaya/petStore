@@ -1,6 +1,7 @@
 package services.impl;
 
 import models.Pet;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import repositories.PetRepository;
@@ -11,6 +12,7 @@ import java.util.Optional;
 @Service("petService")
 public class PetServiceImpl {
 
+    @Autowired
     private PetRepository petRepository;
 
     public List<Pet> findAll(){

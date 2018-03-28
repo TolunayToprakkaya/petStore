@@ -2,26 +2,20 @@ package controllers;
 
 import models.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import services.UserService;
 import services.impl.UserServiceImpl;
 
 import java.util.List;
 
-@Controller
-@RequestMapping(value = "/user")
+@RestController
+@RequestMapping(value = "/users")
 public class UserController {
 
     @Autowired
+    @Qualifier("userService")
     private UserService userService;
 
-    @Autowired
-    private UserServiceImpl userServiceImpl;
-
-    @RequestMapping(value = "")
-    public void findAll(){
-        userServiceImpl.findAll();
-    }
 }

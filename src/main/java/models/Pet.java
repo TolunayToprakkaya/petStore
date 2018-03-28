@@ -5,7 +5,7 @@ import org.springframework.data.rest.core.annotation.RestResource;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "pet")
+@Table(name = "T_PET")
 public class Pet {
 
     @Id
