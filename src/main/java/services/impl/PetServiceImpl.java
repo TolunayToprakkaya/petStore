@@ -5,29 +5,35 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import repositories.PetRepository;
+import services.PetService;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service("petService")
-public class PetServiceImpl {
+public class PetServiceImpl implements PetService {
 
     @Autowired
     private PetRepository petRepository;
 
-    public List<Pet> findAll(){
-        return petRepository.findAll();
+
+    @Override
+    public Iterable<Pet> findAll() {
+        return this.petRepository.findAll();
     }
 
-    public Pet save(Pet pet){
-        return petRepository.save(pet);
+    @Override
+    public Optional<Pet> findOneById(Integer id) {
+        return this.petRepository.findById(id);
     }
 
-    public Optional<Pet> findOneByPet(@PathVariable(value = "id") Integer id){
-        return petRepository.findById(id);
+    @Override
+    public Pet save(Pet pet) {
+        return this.petRepository.save(pet);
     }
 
-    public void delete(@PathVariable(value = "id") Integer id){
+    @Override
+    public void delete(Integer id) {
         petRepository.deleteById(id);
     }
 }

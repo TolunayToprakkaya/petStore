@@ -14,8 +14,8 @@ public class CategoryServiceImpl implements CategoryService{
     @Autowired
     private CategoryRepository categoryRepository;
 
-    public List<Category> findAll(){
-        return categoryRepository.findAll();
+    @Override
+    public Iterable<Category> findAll() {
+        return this.categoryRepository.findAll();
     }
-
 }

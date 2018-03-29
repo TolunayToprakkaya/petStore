@@ -14,8 +14,8 @@ public class TagServiceImpl implements TagService{
     @Autowired
     private TagRepository tagRepository;
 
-    public List<Tag> findAll(){
-        return tagRepository.findAll();
+    @Override
+    public Iterable<Tag> findAll() {
+        return this.tagRepository.findAll();
     }
-
 }

@@ -21,6 +21,6 @@ public class UserController {
 
     @RequestMapping(value = "")
     public void findAll(){
-        //userService.findAll();
+        userService.findAll();
     }
 }
