@@ -15,4 +15,9 @@ public class TagController {
     @Qualifier("tagService")
     private TagService tagService;
 
+    //Find All
+    @RequestMapping(value = "")
+    public void findAll(){
+        tagService.findAll();
+    }
 }

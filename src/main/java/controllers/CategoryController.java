@@ -15,4 +15,10 @@ public class CategoryController {
     @Qualifier("categoryService")
     private CategoryService categoryService;
 
+    //Find All
+    @RequestMapping(value = "")
+    public void findAll(){
+        categoryService.findAll();
+    }
+
 }

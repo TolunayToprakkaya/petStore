@@ -1,8 +1,10 @@
 package controllers;
 
+import models.Pet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import services.PetService;
@@ -15,4 +17,31 @@ public class PetController {
     @Qualifier("petService")
     private PetService petService;
 
+    //Find All
+    @RequestMapping(value = "")
+    public void findAll(){
+        petService.findAll();
+    }
+    //View
+    @RequestMapping(value = "/view/{id}")
+    public void view(@PathVariable Integer id){
+        petService.findOneById(id);
+    }
+    //Edit
+    @RequestMapping(value = "/edit/{id}")
+    public void edit(@PathVariable Integer id){
+        petService.findOneById(id);
+    }
+    //Save
+    @RequestMapping(value = "/save")
+    public void save(Pet pet){
+        petService.save(pet);
+    }
+    /*
+    //Delete
+    @RequestMapping(value = "/delete/{id}")
+    public void delete(@PathVariable Integer id){
+        petService.delete(id);
+    }
+    */
 }

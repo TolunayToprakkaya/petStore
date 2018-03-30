@@ -3,7 +3,6 @@ package services.impl;
 import models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 import repositories.UserRepository;
 import services.UserService;
 
@@ -32,7 +31,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void delete(Integer id) {
-        userRepository.deleteById(id);
+        this.userRepository.deleteById(id);
     }
-
 }
