@@ -4,6 +4,6 @@ import models.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-@RepositoryRestResource(path = "store", collectionResourceRel = "store")
+@RepositoryRestResource(path = "order", collectionResourceRel = "order")
 public interface OrderRepository extends JpaRepository<Order, Integer> {
 }
