@@ -10,8 +10,8 @@ public class Pet {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    private Integer id;
+    @Column(name = "petId")
+    private Integer petId;
 
     @RestResource(exported = false)
     @ManyToOne
@@ -29,12 +29,19 @@ public class Pet {
     @JoinColumn(name = "tagName")
     private Tag tagName;
 
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "store")
+    private String status;
 
-    public Integer getId() {
-        return id;
+    @RestResource(exported = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "orderId", nullable = false)
+    private Order order;
+
+    public Integer getPetId() {
+        return petId;
     }
-    public void setId(Integer id) {
-        this.id = id;
+    public void setPetId(Integer petId) {
+        this.petId = petId;
     }
 
     public Category getCategoryName() {
@@ -65,4 +72,17 @@ public class Pet {
         this.tagName = tagName;
     }
 
+    public String getStatus() {
+        return status;
+    }
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+    public void setOrder(Order order) {
+        this.order = order;
+    }
 }
