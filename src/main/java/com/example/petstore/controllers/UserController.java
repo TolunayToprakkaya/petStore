@@ -7,8 +7,10 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import com.example.petstore.services.UserService;
 
+import java.util.List;
+
 @RestController
-@RequestMapping(value = "/users")
+@RequestMapping("/users")
 public class UserController {
 
     @Autowired
@@ -17,8 +19,8 @@ public class UserController {
 
     //Find All
     @RequestMapping(method = RequestMethod.GET)
-    public void findAll(){
-        userService.findAll();
+    public List<User> findAll(){
+        return userService.findAll();
     }
 
     //View

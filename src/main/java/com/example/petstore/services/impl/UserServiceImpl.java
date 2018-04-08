@@ -7,6 +7,7 @@ import com.example.petstore.repositories.UserRepository;
 import com.example.petstore.services.UserService;
 
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Optional;
 
 @Service("userService")
@@ -16,7 +17,7 @@ public class UserServiceImpl implements UserService {
     private  UserRepository userRepository;
 
     @Override
-    public Iterable<User> findAll() {
+    public List<User> findAll() {
         return this.userRepository.findAll();
     }
 
