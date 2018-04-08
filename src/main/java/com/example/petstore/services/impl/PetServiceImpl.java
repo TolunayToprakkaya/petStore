@@ -26,11 +26,6 @@ public class PetServiceImpl implements PetService {
     }
 
     @Override
-    public Iterable<Pet> findOneByStatus(String status) {
-        return this.petRepository.findOneByStatus(status);
-    }
-
-    @Override
     public Pet save(Pet pet) {
         return this.petRepository.save(pet);
     }

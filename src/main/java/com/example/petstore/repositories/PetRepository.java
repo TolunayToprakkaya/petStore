@@ -8,6 +8,4 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 @RepositoryRestResource(path = "pet", collectionResourceRel = "pet")
 public interface PetRepository extends JpaRepository<Pet, Integer> {
 
-    Iterable<Pet> findOneByStatus(@Param("status") String status);
-
 }

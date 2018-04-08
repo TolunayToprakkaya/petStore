@@ -26,10 +26,9 @@ public class User extends AbstractEntity{
     @Column(name = "phone")
     private String phone;
 
-    @Column(name = "userStatus")
-    private Integer userStatus;
-
-
+    @Column(name = "status")
+    private Integer status;
+    
     public String getUsername() {
         return username;
     }
@@ -70,12 +69,5 @@ public class User extends AbstractEntity{
     }
     public void setPhone(String phone) {
         this.phone = phone;
-    }
-
-    public Integer getUserStatus() {
-        return userStatus;
-    }
-    public void setUserStatus(Integer userStatus) {
-        this.userStatus = userStatus;
     }
 }
