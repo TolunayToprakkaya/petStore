@@ -10,5 +10,5 @@ public interface UserService {
     Optional<User> findOneById(String id);
     User save(User user);
     void delete(String id);
-
+    User update(User user);
 }
