@@ -1,10 +1,12 @@
 package com.example.petstore.models;
 
+import com.example.petstore.models.seedwork.AbstractEntity;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "T_USER")
-public class User {
+public class User extends AbstractEntity{
 
     @Column(name = "username")
     private String username;

@@ -1,18 +1,13 @@
 package com.example.petstore.models;
 
+import com.example.petstore.models.seedwork.AbstractEntity;
 import org.springframework.data.rest.core.annotation.RestResource;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "T_PET")
-public class Pet {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "petId")
-    private Integer petId;
-
+public class Pet extends AbstractEntity {
     @RestResource(exported = false)
     @ManyToOne
     @JoinColumn(name = "categoryName")
@@ -36,13 +31,6 @@ public class Pet {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "orderId", nullable = false)
     private Order order;
-
-    public Integer getPetId() {
-        return petId;
-    }
-    public void setPetId(Integer petId) {
-        this.petId = petId;
-    }
 
     public Category getCategoryName() {
         return categoryName;

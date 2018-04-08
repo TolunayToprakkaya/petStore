@@ -1,5 +1,7 @@
 package com.example.petstore.models;
 
+import com.example.petstore.models.seedwork.AbstractEntity;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.HashSet;
@@ -7,10 +9,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "T_ORDER")
-public class Order {
-
-    @Column(name = "orderId")
-    private Integer orderId;
+public class Order extends AbstractEntity {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "order")
     private Set<Pet> pets = new HashSet<>();
@@ -24,13 +23,6 @@ public class Order {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "status", nullable = false)
     private Pet pet;
-
-    public Integer getOrderId() {
-        return orderId;
-    }
-    public void setOrderId(Integer orderId) {
-        this.orderId = orderId;
-    }
 
     public Set<Pet> getPets() {
         return pets;

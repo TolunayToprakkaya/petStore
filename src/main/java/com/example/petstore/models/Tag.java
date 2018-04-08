@@ -1,25 +1,14 @@
 package com.example.petstore.models;
 
+import com.example.petstore.models.seedwork.AbstractEntity;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "T_TAG")
-public class Tag {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name =  "id")
-    private Integer id;
-
+public class Tag extends AbstractEntity {
     @Column(name = "tagName")
     private String tagName;
-
-    public Integer getId() {
-        return id;
-    }
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getTagName() {
         return tagName;
