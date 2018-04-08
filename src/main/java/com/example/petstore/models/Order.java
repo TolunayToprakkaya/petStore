@@ -20,10 +20,6 @@ public class Order extends AbstractEntity {
     @Column(name = "shipDate")
     private Timestamp shipDate;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "status", nullable = false)
-    private Pet pet;
-
     public Set<Pet> getPets() {
         return pets;
     }
@@ -44,12 +40,4 @@ public class Order extends AbstractEntity {
     public void setShipDate(Timestamp shipDate) {
         this.shipDate = shipDate;
     }
-
-    public Pet getPet() {
-        return pet;
-    }
-    public void setPet(Pet pet) {
-        this.pet = pet;
-    }
-
 }

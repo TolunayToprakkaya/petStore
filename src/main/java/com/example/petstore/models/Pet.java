@@ -24,9 +24,6 @@ public class Pet extends AbstractEntity {
     @JoinColumn(name = "tagName")
     private Tag tagName;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "store")
-    private String status;
-
     @RestResource(exported = false)
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "orderId", nullable = false)
@@ -58,13 +55,6 @@ public class Pet extends AbstractEntity {
     }
     public void setTagName(Tag tagName) {
         this.tagName = tagName;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-    public void setStatus(String status) {
-        this.status = status;
     }
 
     public Order getOrder() {
