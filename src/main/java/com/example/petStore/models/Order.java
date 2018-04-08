@@ -11,8 +11,9 @@ import java.util.Set;
 @Table(name = "T_ORDER")
 public class Order extends AbstractEntity {
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "order")
-    private Set<Pet> pets = new HashSet<>();
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id", nullable = false)
+    private Pet pet;
 
     @Column(name = "quantity")
     private Integer quantity;
@@ -23,11 +24,11 @@ public class Order extends AbstractEntity {
     @Column(name = "complete")
     private boolean complete;
 
-    public Set<Pet> getPets() {
-        return pets;
+    public Pet getPet() {
+        return pet;
     }
-    public void setPets(Set<Pet> pets) {
-        this.pets = pets;
+    public void setPet(Pet pet) {
+        this.pet = pet;
     }
 
     public Integer getQuantity() {

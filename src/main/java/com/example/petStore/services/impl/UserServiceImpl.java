@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import com.example.petStore.repositories.UserRepository;
 import com.example.petStore.services.UserService;
 
+import javax.transaction.Transactional;
 import java.util.Optional;
 
 @Service("userService")
@@ -20,17 +21,25 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Optional<User> findOneById(Integer id) {
+    public Optional<User> findOneById(String id) {
         return this.userRepository.findById(id);
     }
 
+    @Transactional
     @Override
     public User save(User user) {
         return this.userRepository.save(user);
     }
 
+    @Transactional
     @Override
-    public void delete(Integer id) {
+    public User update(User user) {
+        return userRepository.save(user);
+    }
+
+    @Transactional
+    @Override
+    public void delete(String id) {
         this.userRepository.deleteById(id);
     }
 }

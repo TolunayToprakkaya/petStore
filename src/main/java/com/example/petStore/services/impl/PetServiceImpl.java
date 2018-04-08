@@ -23,7 +23,7 @@ public class PetServiceImpl implements PetService {
     }
 
     @Override
-    public Optional<Pet> findOneById(Integer id) {
+    public Optional<Pet> findOneById(String id) {
         return this.petRepository.findById(id);
     }
 
@@ -33,7 +33,7 @@ public class PetServiceImpl implements PetService {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(String id) {
         petRepository.deleteById(id);
     }
 }

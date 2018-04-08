@@ -12,10 +12,10 @@ public class Pet extends AbstractEntity{
     @RestResource(exported = false)
     @ManyToOne
     @JoinColumn(name = "categoryName")
-    private Category categoryName;
+    private Category category;
 
-    @Column(name = "petName")
-    private String petName;
+    @Column(name = "name")
+    private String name;
 
     @Column(name = "photoUrl")
     private String photoUrl;
@@ -23,25 +23,23 @@ public class Pet extends AbstractEntity{
     @RestResource(exported = false)
     @ManyToOne
     @JoinColumn(name = "tagName")
-    private Tag tagName;
+    private Tag tag;
 
-    @RestResource(exported = false)
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "orderId", nullable = false)
-    private Order order;
+   @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "pet")
+   private Order order;
 
-    public Category getCategoryName() {
-        return categoryName;
+    public Category getCategory() {
+        return category;
     }
-    public void setCategoryName(Category categoryName) {
-        this.categoryName = categoryName;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
-    public String getPetName() {
-        return petName;
+    public String getName() {
+        return name;
     }
-    public void setPetName(String petName) {
-        this.petName = petName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getPhotoUrl() {
@@ -51,13 +49,12 @@ public class Pet extends AbstractEntity{
         this.photoUrl = photoUrl;
     }
 
-    public Tag getTagName() {
-        return tagName;
+    public Tag getTag() {
+        return tag;
     }
-    public void setTagName(Tag tagName) {
-        this.tagName = tagName;
+    public void setTag(Tag tag) {
+        this.tag = tag;
     }
-
 
     public Order getOrder() {
         return order;

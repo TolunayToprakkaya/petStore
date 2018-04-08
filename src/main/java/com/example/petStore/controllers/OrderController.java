@@ -27,7 +27,7 @@ public class OrderController {
     }
     //Find One By OrderId
     @RequestMapping(value = "/order/{orderId}")
-    public void findByOrder(@PathVariable Integer orderId){
+    public void findByOrder(@PathVariable String orderId){
         orderService.findOneById(orderId);
     }
     //Save

@@ -3,19 +3,24 @@ package com.example.petStore.models;
 import com.example.petStore.models.seedwork.AbstractEntity;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "T_CATEGORY")
 public class Category extends AbstractEntity {
 
-    @Column(name = "categoryName")
-    public String categoryName;
+    @Column(name = "name")
+    private String name;
 
-    public String getCategoryName() {
-        return categoryName;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "Category")
+    private Set<Pet> pets = new HashSet<>();
+
+    public String getName() {
+        return name;
     }
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
+    public void setName(String name) {
+        this.name = name;
     }
 
 }

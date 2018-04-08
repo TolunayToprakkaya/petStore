@@ -3,9 +3,8 @@ package com.example.petStore.controllers;
 import com.example.petStore.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 import com.example.petStore.services.UserService;
 
 @RestController
@@ -17,33 +16,33 @@ public class UserController {
     private UserService userService;
 
     //Find All
-    @RequestMapping(value = "")
+    @RequestMapping(method = RequestMethod.GET)
     public void findAll(){
         userService.findAll();
     }
 
     //View
-    @RequestMapping(value = "/view/{id}")
-    public void view(@PathVariable Integer id){
-        userService.findOneById(id);
-    }
-
-    //Edit
-    @RequestMapping(value = "/edit/{id}")
-    public void edit(@PathVariable Integer id){
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public void view(@PathVariable String id){
         userService.findOneById(id);
     }
 
     //Save
-    @RequestMapping(value = "/save")
-    public void save(User user){
+    @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public void save(@RequestBody User user){
         userService.save(user);
     }
-    /*
+
+    //Update
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    public void update(@RequestBody User user){
+        userService.update(user);
+    }
+
     //Delete
-    @RequestMapping(value = "/delete/{id}")
-    public void delete(@PathVariable Integer id){
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public void delete(@PathVariable String id){
         userService.delete(id);
     }
-    */
+
 }
