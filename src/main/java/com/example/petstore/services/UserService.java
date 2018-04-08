@@ -7,8 +7,8 @@ import java.util.Optional;
 public interface UserService {
 
     Iterable<User> findAll();
-    Optional<User> findOneById(Integer id);
+    Optional<User> findOneById(String id);
     User save(User user);
-    void delete(Integer id);
+    void delete(String id);
 
 }

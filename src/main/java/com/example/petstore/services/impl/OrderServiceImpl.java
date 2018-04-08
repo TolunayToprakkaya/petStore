@@ -21,7 +21,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Optional<Order> findOneById(Integer orderId) {
+    public Optional<Order> findOneById(String orderId) {
         return this.orderRepository.findById(orderId);
     }
 
@@ -31,7 +31,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void delete(Integer orderId) {
+    public void delete(String orderId) {
         orderRepository.deleteById(orderId);
     }
 }

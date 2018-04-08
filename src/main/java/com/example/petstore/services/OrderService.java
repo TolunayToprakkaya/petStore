@@ -7,8 +7,8 @@ import java.util.Optional;
 public interface OrderService {
 
     Iterable<Order> findAll();
-    Optional<Order> findOneById(Integer orderId);
+    Optional<Order> findOneById(String orderId);
     Order save(Order order);
-    void delete(Integer orderId);
+    void delete(String orderId);
 
 }

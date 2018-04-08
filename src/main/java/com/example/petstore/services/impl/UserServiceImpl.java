@@ -20,7 +20,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Optional<User> findOneById(Integer id) {
+    public Optional<User> findOneById(String id) {
         return this.userRepository.findById(id);
     }
 
@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(String id) {
         this.userRepository.deleteById(id);
     }
 }

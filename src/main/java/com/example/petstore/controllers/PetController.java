@@ -23,12 +23,12 @@ public class PetController {
     }
     //View
     @RequestMapping(value = "/view/{id}")
-    public void view(@PathVariable Integer id){
+    public void view(@PathVariable String id){
         petService.findOneById(id);
     }
     //Edit
     @RequestMapping(value = "/edit/{id}")
-    public void edit(@PathVariable Integer id){
+    public void edit(@PathVariable String id){
         petService.findOneById(id);
     }
     //Save
