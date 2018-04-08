@@ -23,7 +23,7 @@ public class AbstractEntity implements Serializable {
 
     @Id
     @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "com.example.demo.domain.entities.util.UpperCaseUUIDGenerator")
+    @GenericGenerator(name = "uuid", strategy = "com.example.petstore.models.util.UpperCaseUUIDGenerator")
     @Access(AccessType.PROPERTY)
     @Column(name = "ID")
     @Getter

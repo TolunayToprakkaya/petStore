@@ -1,10 +1,12 @@
 package com.example.petStore.models;
 
+import com.example.petStore.models.seedwork.AbstractEntity;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "T_USER")
-public class User {
+public class User extends AbstractEntity{
 
     @Column(name = "username")
     private String username;
@@ -24,8 +26,8 @@ public class User {
     @Column(name = "phone")
     private String phone;
 
-    @Column(name = "userStatus")
-    private Integer userStatus;
+    @Column(name = "status")
+    private Integer status;
 
 
     public String getUsername() {
@@ -70,10 +72,11 @@ public class User {
         this.phone = phone;
     }
 
-    public Integer getUserStatus() {
-        return userStatus;
+    public Integer getStatus() {
+        return status;
     }
-    public void setUserStatus(Integer userStatus) {
-        this.userStatus = userStatus;
+    public void setStatus(Integer status) {
+        this.status = status;
     }
+
 }

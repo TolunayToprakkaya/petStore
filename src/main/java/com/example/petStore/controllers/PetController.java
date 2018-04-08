@@ -32,11 +32,6 @@ public class PetController {
     public void edit(@PathVariable Integer id){
         petService.findOneById(id);
     }
-    //Find By Status
-    @RequestMapping(value = "/findByStatus")
-    public void status(@PathVariable String status){
-        petService.findOneByStatus(status);
-    }
     //Save
     @RequestMapping(value = "/save")
     public void save(Pet pet){
