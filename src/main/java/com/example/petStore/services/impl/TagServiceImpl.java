@@ -15,7 +15,7 @@ public class TagServiceImpl implements TagService{
     private TagRepository tagRepository;
 
     @Override
-    public Iterable<Tag> findAll() {
+    public List<Tag> findAll() {
         return this.tagRepository.findAll();
     }
 }

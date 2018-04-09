@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface CategoryService {
 
-    Iterable<Category> findAll();
+    List<Category> findAll();
 
 }

@@ -7,6 +7,7 @@ import com.example.petStore.repositories.OrderRepository;
 import com.example.petStore.services.OrderService;
 
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Optional;
 
 @Service("orderService")
@@ -17,7 +18,7 @@ public class OrderServiceImpl implements OrderService {
 
 
     @Override
-    public Iterable<Order> findAll() {
+    public List<Order> findAll() {
         return this.orderRepository.findAll();
     }
 

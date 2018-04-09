@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface PetService {
 
-    Iterable<Pet> findAll();
+    List<Pet> findAll();
     Optional<Pet> findOneById(String id);
     Pet save(Pet pet);
     Pet update(Pet pet);

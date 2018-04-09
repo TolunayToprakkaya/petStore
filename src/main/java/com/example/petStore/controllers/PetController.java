@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import com.example.petStore.services.PetService;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(value = "/pets")
 public class PetController {
@@ -18,8 +20,8 @@ public class PetController {
 
     //Find All
     @RequestMapping(method = RequestMethod.GET)
-    public void findAll(){
-        petService.findAll();
+    public List<Pet> findAll(){
+        return petService.findAll();
     }
 
     //View

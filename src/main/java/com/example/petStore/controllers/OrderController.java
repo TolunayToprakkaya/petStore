@@ -1,10 +1,13 @@
 package com.example.petStore.controllers;
 
 import com.example.petStore.models.Order;
+import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import com.example.petStore.services.OrderService;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/order")
@@ -15,8 +18,8 @@ public class OrderController {
 
     //Find All
     @RequestMapping(method = RequestMethod.GET)
-    public void findAll(){
-        orderService.findAll();
+    public List<Order> findAll(){
+        return orderService.findAll();
     }
 
     //View

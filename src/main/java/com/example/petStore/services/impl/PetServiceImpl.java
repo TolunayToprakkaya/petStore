@@ -19,7 +19,7 @@ public class PetServiceImpl implements PetService {
 
 
     @Override
-    public Iterable<Pet> findAll() {
+    public List<Pet> findAll() {
         return this.petRepository.findAll();
     }
 
