@@ -2,10 +2,8 @@ package com.example.petStore.controllers;
 
 import com.example.petStore.models.Order;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 import com.example.petStore.services.OrderService;
 
 @RestController
@@ -16,30 +14,33 @@ public class OrderController {
     private OrderService orderService;
 
     //Find All
-    @RequestMapping(value = "")
+    @RequestMapping(method = RequestMethod.GET)
     public void findAll(){
         orderService.findAll();
     }
-    //Fimd All
-    @RequestMapping(value = "/order")
-    public void order(){
-        orderService.findAll();
+
+    //View
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public void view(@PathVariable String id){
+        orderService.findOneById(id);
     }
-    //Find One By OrderId
-    @RequestMapping(value = "/order/{orderId}")
-    public void findByOrder(@PathVariable String orderId){
-        orderService.findOneById(orderId);
-    }
+
     //Save
-    @RequestMapping(value = "/order/save")
-    public void save(Order order){
+    @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public void save(@RequestBody Order order){
         orderService.save(order);
     }
-    /*
-    //Delete One By OrderId
-    @RequestMapping(value = "/order/{orderId}")
-    public void delete(@PathVariable Integer orderId){
-        storeService.delete(orderId);
+
+    //Update
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    public void update(@RequestBody Order order){
+        orderService.save(order);
     }
-    */
+
+    //Delete
+    @RequestMapping(value = "/{orderId}", method = RequestMethod.DELETE)
+    public void delete(@PathVariable String id){
+        orderService.delete(id);
+    }
+
 }

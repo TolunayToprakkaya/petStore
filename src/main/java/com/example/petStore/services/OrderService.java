@@ -9,6 +9,7 @@ public interface OrderService {
     Iterable<Order> findAll();
     Optional<Order> findOneById(String id);
     Order save(Order order);
+    Order update(Order order);
     void delete(String id);
 
 }

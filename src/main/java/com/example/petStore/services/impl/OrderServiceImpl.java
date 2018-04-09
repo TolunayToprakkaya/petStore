@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import com.example.petStore.repositories.OrderRepository;
 import com.example.petStore.services.OrderService;
 
+import javax.transaction.Transactional;
 import java.util.Optional;
 
 @Service("orderService")
@@ -22,17 +23,25 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Optional<Order> findOneById(String id) {
-        return this.orderRepository.findById(id);
+        return this.orderRepository.findOneById(id);
     }
 
+    @Transactional
     @Override
     public Order save(Order order) {
         return this.orderRepository.save(order);
     }
 
+    @Transactional
+    @Override
+    public Order update(Order order) {
+        return orderRepository.save(order);
+    }
+
+    @Transactional
     @Override
     public void delete(String id) {
-        orderRepository.deleteById(id);
+        orderRepository.delete(id);
     }
 
 

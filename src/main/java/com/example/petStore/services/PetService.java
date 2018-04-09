@@ -10,6 +10,7 @@ public interface PetService {
     Iterable<Pet> findAll();
     Optional<Pet> findOneById(String id);
     Pet save(Pet pet);
+    Pet update(Pet pet);
     void delete(String id);
 
 }

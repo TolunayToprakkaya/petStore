@@ -7,6 +7,7 @@ import com.example.petStore.repositories.UserRepository;
 import com.example.petStore.services.UserService;
 
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Optional;
 
 @Service("userService")
@@ -16,13 +17,13 @@ public class UserServiceImpl implements UserService {
     private  UserRepository userRepository;
 
     @Override
-    public Iterable<User> findAll() {
+    public List<User> findAll() {
         return this.userRepository.findAll();
     }
 
     @Override
     public Optional<User> findOneById(String id) {
-        return this.userRepository.findById(id);
+        return this.userRepository.findOneById(id);
     }
 
     @Transactional
@@ -40,6 +41,6 @@ public class UserServiceImpl implements UserService {
     @Transactional
     @Override
     public void delete(String id) {
-        this.userRepository.deleteById(id);
+        this.userRepository.delete(id);
     }
 }

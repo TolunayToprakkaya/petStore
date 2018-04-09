@@ -3,10 +3,9 @@ package com.example.petStore.controllers;
 import com.example.petStore.models.Pet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.example.petStore.services.PetService;
 
 @RestController
@@ -18,30 +17,33 @@ public class PetController {
     private PetService petService;
 
     //Find All
-    @RequestMapping(value = "")
+    @RequestMapping(method = RequestMethod.GET)
     public void findAll(){
         petService.findAll();
     }
+
     //View
-    @RequestMapping(value = "/view/{id}")
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public void view(@PathVariable String id){
         petService.findOneById(id);
     }
-    //Edit
-    @RequestMapping(value = "/edit/{id}")
-    public void edit(@PathVariable String id){
-        petService.findOneById(id);
-    }
+
     //Save
-    @RequestMapping(value = "/save")
-    public void save(Pet pet){
+    @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public void save(@RequestBody Pet pet){
         petService.save(pet);
     }
-    /*
+
+    //Update
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    public void update(@RequestBody Pet pet){
+        petService.update(pet);
+    }
+
     //Delete
-    @RequestMapping(value = "/delete/{id}")
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void delete(@PathVariable String id){
         petService.delete(id);
     }
-    */
+
 }
