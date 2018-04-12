@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Optional<User> findOneById(String id) {
-        return this.userRepository.findOneById(id);
+        return this.userRepository.findById(id);
     }
 
     @Transactional
@@ -41,6 +41,6 @@ public class UserServiceImpl implements UserService {
     @Transactional
     @Override
     public void delete(String id) {
-        this.userRepository.delete(id);
+        this.userRepository.deleteById(id);
     }
 }

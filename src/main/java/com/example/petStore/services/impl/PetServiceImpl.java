@@ -43,6 +43,6 @@ public class PetServiceImpl implements PetService {
     @Transactional
     @Override
     public void delete(String id) {
-        petRepository.delete(id);
+        petRepository.deleteById(id);
     }
 }

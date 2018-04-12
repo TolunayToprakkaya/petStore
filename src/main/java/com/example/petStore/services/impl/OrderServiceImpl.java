@@ -24,7 +24,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Optional<Order> findOneById(String id) {
-        return this.orderRepository.findOneById(id);
+        return this.orderRepository.findById(id);
     }
 
     @Transactional
@@ -42,7 +42,7 @@ public class OrderServiceImpl implements OrderService {
     @Transactional
     @Override
     public void delete(String id) {
-        orderRepository.delete(id);
+        orderRepository.deleteById(id);
     }
 
 

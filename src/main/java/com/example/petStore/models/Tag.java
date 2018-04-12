@@ -23,4 +23,11 @@ public class Tag extends AbstractEntity{
         this.name = name;
     }
 
+    public Set<Pet> getPets() {
+        return pets;
+    }
+    public void setPets(Set<Pet> pets) {
+        this.pets = pets;
+    }
+
 }

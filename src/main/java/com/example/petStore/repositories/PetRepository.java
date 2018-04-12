@@ -8,9 +8,5 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import java.util.Optional;
 
 @RepositoryRestResource(path = "pets", collectionResourceRel = "pets", exported = false)
-public interface PetRepository extends JpaRepository<Pet, Integer> {
-
-    Optional<Pet> findById(String id);
-    void delete(String id);
-
+public interface PetRepository extends JpaRepository<Pet, String> {
 }
