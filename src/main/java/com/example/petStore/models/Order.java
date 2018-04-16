@@ -21,6 +21,12 @@ public class Order extends AbstractEntity {
     @Column(name = "shipDate")
     private Timestamp shipDate;
 
+    private enum OrderStatus{
+        placed,
+        approved,
+        delivered
+    }
+
     @Column(name = "complete")
     private boolean complete;
 

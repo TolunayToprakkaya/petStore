@@ -25,8 +25,11 @@ public class Pet extends AbstractEntity{
     @JoinColumn(name = "tagName")
     private Tag tag;
 
-   @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "pet")
-   private Order order;
+   private enum status{
+       available,
+       pending,
+       sold
+   }
 
     public Category getCategory() {
         return category;
@@ -56,10 +59,4 @@ public class Pet extends AbstractEntity{
         this.tag = tag;
     }
 
-    public Order getOrder() {
-        return order;
-    }
-    public void setOrder(Order order) {
-        this.order = order;
-    }
 }
