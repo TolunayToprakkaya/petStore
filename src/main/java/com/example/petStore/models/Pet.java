@@ -11,7 +11,7 @@ public class Pet extends AbstractEntity{
 
     @RestResource(exported = false)
     @ManyToOne
-    @JoinColumn(name = "categoryName")
+    @JoinColumn(name = "categoryId")
     private Category category;
 
     @RestResource(exported = false)
