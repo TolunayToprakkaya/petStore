@@ -12,8 +12,8 @@ import java.util.Set;
 public class Order extends AbstractEntity {
 
     @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id", nullable = false)
-    private Pet pet;
+    @JoinColumn(name = "order", nullable = false)
+    private Set<Pet> pet = new HashSet<>();
 
     @Column(name = "quantity")
     private Integer quantity;
@@ -30,10 +30,11 @@ public class Order extends AbstractEntity {
     @Column(name = "complete")
     private boolean complete;
 
-    public Pet getPet() {
+    public Set<Pet> getPet() {
         return pet;
     }
-    public void setPet(Pet pet) {
+
+    public void setPet(Set<Pet> pet) {
         this.pet = pet;
     }
 
