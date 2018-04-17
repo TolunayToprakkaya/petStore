@@ -11,8 +11,7 @@ import java.util.Set;
 @Table(name = "T_ORDER")
 public class Order extends AbstractEntity {
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "order", nullable = false)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "order")
     private Set<Pet> pet = new HashSet<>();
 
     @Column(name = "quantity")
