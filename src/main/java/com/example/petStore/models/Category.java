@@ -13,7 +13,7 @@ public class Category extends AbstractEntity {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "Category")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "category")
     private Set<Pet> pets = new HashSet<>();
 
     public String getName() {
