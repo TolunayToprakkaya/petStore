@@ -4,6 +4,7 @@ import com.example.petstore.models.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.petstore.services.TagService;
 
@@ -18,7 +19,7 @@ public class TagController {
     private TagService tagService;
 
     //Find All
-    @RequestMapping(value = "")
+    @RequestMapping(method = RequestMethod.GET)
     public List<Tag> findAll(){
         return tagService.findAll();
     }
