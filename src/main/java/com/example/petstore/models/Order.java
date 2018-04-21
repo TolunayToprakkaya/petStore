@@ -1,5 +1,6 @@
 package com.example.petstore.models;
 
+import com.example.petstore.models.enums.OrderStatus;
 import com.example.petstore.models.seedwork.AbstractEntity;
 
 import javax.persistence.*;
@@ -11,8 +12,8 @@ import java.util.Set;
 @Table(name = "T_ORDER")
 public class Order extends AbstractEntity {
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "order")
-    private Set<Pet> pet = new HashSet<>();
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "order")
+    private Set<Pet> pets = new HashSet<>();
 
     @Column(name = "quantity")
     private Integer quantity;
@@ -20,21 +21,17 @@ public class Order extends AbstractEntity {
     @Column(name = "shipDate")
     private Timestamp shipDate;
 
-    private enum OrderStatus{
-        placed,
-        approved,
-        delivered
-    }
+    @Column(name = "orderStatus")
+    private OrderStatus orderStatus;
 
     @Column(name = "complete")
     private boolean complete;
 
-    public Set<Pet> getPet() {
-        return pet;
+    public Set<Pet> getPets() {
+        return pets;
     }
-
-    public void setPet(Set<Pet> pet) {
-        this.pet = pet;
+    public void setPets(Set<Pet> pets) {
+        this.pets = pets;
     }
 
     public Integer getQuantity() {
@@ -49,6 +46,13 @@ public class Order extends AbstractEntity {
     }
     public void setShipDate(Timestamp shipDate) {
         this.shipDate = shipDate;
+    }
+
+    public OrderStatus getOrderStatus() {
+        return orderStatus;
+    }
+    public void setOrderStatus(OrderStatus orderStatus) {
+        this.orderStatus = orderStatus;
     }
 
     public boolean isComplete() {
