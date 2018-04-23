@@ -5,20 +5,20 @@ import com.example.petstore.models.seedwork.AbstractEntity;
 import org.springframework.data.rest.core.annotation.RestResource;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "T_PET")
 public class Pet extends AbstractEntity{
 
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "pet")
+    private Set<Order> orders = new HashSet<>();
+
     @RestResource(exported = false)
     @ManyToOne
     @JoinColumn(name = "categoryId")
     private Category category;
-
-    @RestResource(exported = false)
-    @ManyToOne
-    @JoinColumn(name = "orderId")
-    private Order order;
 
     @Column(name = "name")
     private String name;
@@ -28,11 +28,18 @@ public class Pet extends AbstractEntity{
 
     @RestResource(exported = false)
     @ManyToOne
-    @JoinColumn(name = "tagName")
+    @JoinColumn(name = "tagId")
     private Tag tag;
 
     @Column(name = "petStatus")
     private PetStatus petStatus;
+
+    public Set<Order> getOrders() {
+        return orders;
+    }
+    public void setOrders(Set<Order> orders) {
+        this.orders = orders;
+    }
 
     public Category getCategory() {
         return category;
