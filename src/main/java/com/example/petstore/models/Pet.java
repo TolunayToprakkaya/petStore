@@ -43,6 +43,13 @@ public class Pet extends AbstractEntity{
         this.orders = orders;
     }
 
+    public Set<Order> getOrders() {
+        return orders;
+    }
+    public void setOrders(Set<Order> orders) {
+        this.orders = orders;
+    }
+
     public Category getCategory() {
         return category;
     }
