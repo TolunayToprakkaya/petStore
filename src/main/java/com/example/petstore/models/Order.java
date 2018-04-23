@@ -2,6 +2,7 @@ package com.example.petstore.models;
 
 import com.example.petstore.models.enums.OrderStatus;
 import com.example.petstore.models.seedwork.AbstractEntity;
+import org.springframework.data.rest.core.annotation.RestResource;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -12,8 +13,10 @@ import java.util.Set;
 @Table(name = "T_ORDER")
 public class Order extends AbstractEntity {
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "order")
-    private Set<Pet> pets = new HashSet<>();
+    @RestResource(exported = false)
+    @ManyToOne
+    @JoinColumn(name = "petId")
+    private Pet pet;
 
     @Column(name = "quantity")
     private Integer quantity;
@@ -27,11 +30,11 @@ public class Order extends AbstractEntity {
     @Column(name = "complete")
     private boolean complete;
 
-    public Set<Pet> getPets() {
-        return pets;
+    public Pet getPet() {
+        return pet;
     }
-    public void setPets(Set<Pet> pets) {
-        this.pets = pets;
+    public void setPet(Pet pet) {
+        this.pet = pet;
     }
 
     public Integer getQuantity() {

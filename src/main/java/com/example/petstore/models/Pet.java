@@ -1,5 +1,6 @@
 package com.example.petstore.models;
 
+import com.example.petstore.models.enums.PetStatus;
 import com.example.petstore.models.seedwork.AbstractEntity;
 import org.springframework.data.rest.core.annotation.RestResource;
 
@@ -30,18 +31,8 @@ public class Pet extends AbstractEntity{
     @JoinColumn(name = "tagId")
     private Tag tag;
 
-   private enum status{
-       available,
-       pending,
-       sold
-   }
-
-    public Set<Order> getOrders() {
-        return orders;
-    }
-    public void setOrders(Set<Order> orders) {
-        this.orders = orders;
-    }
+    @Column(name = "petStatus")
+    private PetStatus petStatus;
 
     public Set<Order> getOrders() {
         return orders;
@@ -76,6 +67,13 @@ public class Pet extends AbstractEntity{
     }
     public void setTag(Tag tag) {
         this.tag = tag;
+    }
+
+    public PetStatus getPetStatus() {
+        return petStatus;
+    }
+    public void setPetStatus(PetStatus petStatus) {
+        this.petStatus = petStatus;
     }
 
 }
