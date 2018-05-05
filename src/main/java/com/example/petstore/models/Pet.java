@@ -31,8 +31,8 @@ public class Pet extends AbstractEntity{
     @JoinColumn(name = "tagId")
     private Tag tag;
 
-    @Column(name = "petStatus")
-    private PetStatus petStatus;
+    @Column(name = "status")
+    private PetStatus status;
 
     public Set<Order> getOrders() {
         return orders;
@@ -69,11 +69,11 @@ public class Pet extends AbstractEntity{
         this.tag = tag;
     }
 
-    public PetStatus getPetStatus() {
-        return petStatus;
+    public PetStatus getStatus() {
+        return status;
     }
-    public void setPetStatus(PetStatus petStatus) {
-        this.petStatus = petStatus;
+    public void setStatus(PetStatus status) {
+        this.status = status;
     }
 
 }

@@ -24,8 +24,9 @@ public class Order extends AbstractEntity {
     @Column(name = "shipDate")
     private Timestamp shipDate;
 
-    @Column(name = "orderStatus")
-    private OrderStatus orderStatus;
+    @Column(name = "status")
+    @Enumerated(EnumType.ORDINAL)
+    private OrderStatus status;
 
     @Column(name = "complete")
     private boolean complete;
@@ -51,11 +52,11 @@ public class Order extends AbstractEntity {
         this.shipDate = shipDate;
     }
 
-    public OrderStatus getOrderStatus() {
-        return orderStatus;
+    public OrderStatus getStatus() {
+        return status;
     }
-    public void setOrderStatus(OrderStatus orderStatus) {
-        this.orderStatus = orderStatus;
+    public void setStatus(OrderStatus status) {
+        this.status = status;
     }
 
     public boolean isComplete() {

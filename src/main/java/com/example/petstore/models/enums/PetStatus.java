@@ -1,11 +1,9 @@
 package com.example.petstore.models.enums;
 
-public class PetStatus {
+ public enum PetStatus{
+     available,
+     pending,
+     sold
+ }
 
-    public enum petStatus{
-        available,
-        pending,
-        sold
-    }
 
-}
