@@ -17,18 +17,18 @@ public class Pet extends AbstractEntity{
 
     @RestResource(exported = false)
     @ManyToOne
-    @JoinColumn(name = "categoryId")
+    @JoinColumn(name = "category_id")
     private Category category;
 
     @Column(name = "name")
     private String name;
 
-    @Column(name = "photoUrl")
+    @Column(name = "photo_url")
     private String photoUrl;
 
     @RestResource(exported = false)
     @ManyToOne
-    @JoinColumn(name = "tagId")
+    @JoinColumn(name = "tag_id")
     private Tag tag;
 
     @Column(name = "status")

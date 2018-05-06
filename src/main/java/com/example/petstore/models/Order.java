@@ -15,13 +15,13 @@ public class Order extends AbstractEntity {
 
     @RestResource(exported = false)
     @ManyToOne
-    @JoinColumn(name = "petId")
+    @JoinColumn(name = "pet_id")
     private Pet pet;
 
     @Column(name = "quantity")
     private Integer quantity;
 
-    @Column(name = "shipDate")
+    @Column(name = "ship_date")
     private Timestamp shipDate;
 
     @Column(name = "status")
