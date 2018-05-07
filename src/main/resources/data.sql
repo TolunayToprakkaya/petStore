@@ -19,6 +19,6 @@ INSERT INTO T_PET (id, category_id, name, photo_url, tag_id, status) VALUES ('73
 INSERT INTO T_PET (id, category_id, name, photo_url, tag_id, status) VALUES ('7ce19afa-4726-11e8-842f-0ed5f89f718b', 'cee9aa58-4722-11e8-842f-0ed5f89f718b', 'Siberian', 'http://cdn3-www.cattime.com/assets/uploads/gallery/siberian-cats-and-kittens/siberian-cats-kittens-1.jpg', '018e4a14-4727-11e8-842f-0ed5f89f718b',1 );
 
 
-INSERT INTO T_ORDER (id, pet_id, quantity, ship_date, status, complete) VALUES ('d3fc00a5-8bd1-47dd-8a6a-d153b4e99c0d','d0497088-4d42-11e8-9c2d-fa7ae01bbebc', '10', '04/23/2018', '1', TRUE );
-INSERT INTO T_ORDER (id, pet_id, quantity, ship_date, status, complete) VALUES ('269da09e-4d2f-11e8-9c2d-fa7ae01bbebc','cee9b8fe-4722-11e8-842f-0ed5f89f718b', '5', '04/23/2018', '1', TRUE );
-INSERT INTO T_ORDER (id, pet_id, quantity, ship_date, status, complete) VALUES ('2c38e4aa-4d2f-11e8-9c2d-fa7ae01bbebc','cee9ba2a-4722-11e8-842f-0ed5f89f718b', '4', '04/23/2018', '1', FALSE );
+INSERT INTO T_ORDER (id, pet_id, quantity, ship_date, status, complete) VALUES ('d3fc00a5-8bd1-47dd-8a6a-d153b4e99c0d','d0497088-4d42-11e8-9c2d-fa7ae01bbebc', '10', '2018-04-23 00:00:00', '1', TRUE );
+INSERT INTO T_ORDER (id, pet_id, quantity, ship_date, status, complete) VALUES ('269da09e-4d2f-11e8-9c2d-fa7ae01bbebc','cee9b8fe-4722-11e8-842f-0ed5f89f718b', '5', '2018-04-23 00:00:00', '1', TRUE );
+INSERT INTO T_ORDER (id, pet_id, quantity, ship_date, status, complete) VALUES ('2c38e4aa-4d2f-11e8-9c2d-fa7ae01bbebc','cee9ba2a-4722-11e8-842f-0ed5f89f718b', '4', '2018-04-23 00:00:00', '1', FALSE );
