@@ -9,7 +9,7 @@ import com.example.petstore.services.OrderService;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/order")
+@RequestMapping("/order")
 public class OrderController {
 
     @Autowired

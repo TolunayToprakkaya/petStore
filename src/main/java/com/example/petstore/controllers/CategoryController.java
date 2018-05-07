@@ -11,7 +11,7 @@ import com.example.petstore.services.CategoryService;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/categories")
+@RequestMapping("/categories")
 public class CategoryController {
 
     @Autowired
