@@ -2,6 +2,7 @@ package com.example.petstore.models;
 
 import com.example.petstore.models.enums.PetStatus;
 import com.example.petstore.models.seedwork.AbstractEntity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.rest.core.annotation.RestResource;
 
 import javax.persistence.*;
@@ -15,7 +16,6 @@ public class Pet extends AbstractEntity{
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "pet")
     private Set<Order> orders = new HashSet<>();
 
-    @RestResource(exported = false)
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
@@ -62,6 +62,7 @@ public class Pet extends AbstractEntity{
         this.photoUrl = photoUrl;
     }
 
+    @JsonIgnore
     public Tag getTag() {
         return tag;
     }

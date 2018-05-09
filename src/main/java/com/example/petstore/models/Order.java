@@ -2,6 +2,7 @@ package com.example.petstore.models;
 
 import com.example.petstore.models.enums.OrderStatus;
 import com.example.petstore.models.seedwork.AbstractEntity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.rest.core.annotation.RestResource;
 
 import javax.persistence.*;
@@ -31,6 +32,7 @@ public class Order extends AbstractEntity {
     @Column(name = "complete")
     private boolean complete;
 
+    @JsonIgnore
     public Pet getPet() {
         return pet;
     }
