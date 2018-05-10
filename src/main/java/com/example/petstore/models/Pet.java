@@ -16,7 +16,6 @@ public class Pet extends AbstractEntity{
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "pet")
     private Set<Order> orders = new HashSet<>();
 
-    @RestResource(exported = false)
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
