@@ -7,7 +7,6 @@ INSERT INTO T_CATEGORY (id, name) VALUES ('cee9acf6-4722-11e8-842f-0ed5f89f718b'
 INSERT INTO T_CATEGORY (id, name) VALUES ('cee9ae22-4722-11e8-842f-0ed5f89f718b', 'Fish');
 
 INSERT INTO T_TAG (id, name) VALUES ('b20f7408-4727-11e8-842f-0ed5f89f718b', 'United Kingdom');
---INSERT INTO T_TAG VALUES ('b6f0ee2a-4727-11e8-842f-0ed5f89f718b', 'United Kingdom');
 INSERT INTO T_TAG (id, name) VALUES ('f8b427a6-4726-11e8-842f-0ed5f89f718b', 'USA');
 INSERT INTO T_TAG (id, name) VALUES ('fd758e2e-4726-11e8-842f-0ed5f89f718b', 'Japan');
 INSERT INTO T_TAG (id, name) VALUES ('018e4a14-4727-11e8-842f-0ed5f89f718b', 'Russia');
