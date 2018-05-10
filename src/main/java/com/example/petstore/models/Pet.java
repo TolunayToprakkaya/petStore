@@ -2,6 +2,7 @@ package com.example.petstore.models;
 
 import com.example.petstore.models.enums.PetStatus;
 import com.example.petstore.models.seedwork.AbstractEntity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.rest.core.annotation.RestResource;
 
 import javax.persistence.*;
@@ -34,6 +35,7 @@ public class Pet extends AbstractEntity{
     @Column(name = "status")
     private PetStatus status;
 
+    @JsonIgnore
     public Set<Order> getOrders() {
         return orders;
     }
@@ -41,6 +43,7 @@ public class Pet extends AbstractEntity{
         this.orders = orders;
     }
 
+    @JsonIgnore
     public Category getCategory() {
         return category;
     }
@@ -62,6 +65,7 @@ public class Pet extends AbstractEntity{
         this.photoUrl = photoUrl;
     }
 
+    @JsonIgnore
     public Tag getTag() {
         return tag;
     }

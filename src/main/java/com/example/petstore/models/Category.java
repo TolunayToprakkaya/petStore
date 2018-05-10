@@ -1,6 +1,7 @@
 package com.example.petstore.models;
 
 import com.example.petstore.models.seedwork.AbstractEntity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -23,6 +24,7 @@ public class Category extends AbstractEntity {
         this.name = name;
     }
 
+    @JsonIgnore
     public Set<Pet> getPets() {
         return pets;
     }
