@@ -41,6 +41,12 @@ public class TagController {
         tagService.update(tag);
     }
 
+    //Patch
+    @RequestMapping(value = "/{id}", method = RequestMethod.PATCH)
+    public void patch(@RequestBody Tag tag){
+        tagService.update(tag);
+    }
+
     //Delete
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void delete(@PathVariable String id){

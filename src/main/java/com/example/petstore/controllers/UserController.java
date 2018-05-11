@@ -41,6 +41,12 @@ public class UserController {
         userService.update(user);
     }
 
+    //Patch
+    @RequestMapping(value = "/{id}", method = RequestMethod.PATCH)
+    public void patch(@RequestBody User user){
+        userService.update(user);
+    }
+
     //Delete
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void delete(@PathVariable String id){

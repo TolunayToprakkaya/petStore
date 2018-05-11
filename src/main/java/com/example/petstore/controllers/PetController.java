@@ -41,6 +41,12 @@ public class PetController {
         petService.update(pet);
     }
 
+    //Patch
+    @RequestMapping(value = "/{id}", method = RequestMethod.PATCH)
+    public void patch(@RequestBody Pet pet){
+        petService.update(pet);
+    }
+
     //Delete
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void delete(@PathVariable String id){

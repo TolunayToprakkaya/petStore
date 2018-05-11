@@ -41,6 +41,12 @@ public class CategoryController {
         categoryService.update(category);
     }
 
+    //Patch
+    @RequestMapping(value = "/{id}", method = RequestMethod.PATCH)
+    public void patch(@RequestBody Category category){
+        categoryService.update(category);
+    }
+
     //Delete
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void delete(@PathVariable String id){

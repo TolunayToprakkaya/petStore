@@ -39,6 +39,12 @@ public class OrderController {
         orderService.save(order);
     }
 
+    //Patch
+    @RequestMapping(value = "/{id}", method = RequestMethod.PATCH)
+    public void patch(@RequestBody Order order){
+        orderService.update(order);
+    }
+
     //Delete
     @RequestMapping(value = "/{orderId}", method = RequestMethod.DELETE)
     public void delete(@PathVariable String id){
