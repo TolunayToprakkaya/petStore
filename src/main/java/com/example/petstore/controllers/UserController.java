@@ -1,6 +1,10 @@
 package com.example.petstore.controllers;
 
 import com.example.petstore.models.User;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
@@ -11,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/users")
+@Api(value="UserControllerAPI", produces=MediaType.APPLICATION_JSON_VALUE)
 public class UserController {
 
     @Autowired
@@ -25,6 +30,8 @@ public class UserController {
 
     //View
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @ApiOperation("Gets the user with specfic id")
+    @ApiResponses(value={@ApiResponse(code = 200, message = "OK", response = User.class)})
     public void view(@PathVariable String id){
         userService.findOneById(id);
     }
