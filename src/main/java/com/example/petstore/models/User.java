@@ -29,6 +29,18 @@ public class User extends AbstractEntity{
     @Column(name = "status")
     private Integer status;
 
+    protected User() {
+    }
+
+    public User(String username, String firstname, String lastname, String email, String password, String phone, Integer status) {
+        this.username = username;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.email = email;
+        this.password = password;
+        this.phone = phone;
+        this.status = status;
+    }
 
     public String getUsername() {
         return username;
