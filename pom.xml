@@ -44,7 +44,7 @@
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<version>1.4.196</version>
-		</dependency>
+ 		</dependency>
 
 		<dependency>
 			<groupId>mysql</groupId>
@@ -85,13 +85,14 @@
 			<version>2.7.0</version>
 		</dependency>
 
-		<!--
+		<!-- https://mvnrepository.com/artifact/org.mockito/mockito-all -->
 		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger2</artifactId>
-			<version>2.6.1</version>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>1.10.19</version>
+			<scope>test</scope>
 		</dependency>
-		-->
+
 	</dependencies>
 
 	<build>
