@@ -57,7 +57,7 @@ public class PetServiceImpIntegrationTest {
         List<Pet> pets = new ArrayList<Pet>();
         pets.add(pet);
 
-        Optional<Pet> tagOptional = petServiceImpl.findOneById("f7b2dbd3-1dec-43ad-b192-cb8f7784fc58");
+        Optional<Pet> petOptional = petServiceImpl.findOneById("f7b2dbd3-1dec-43ad-b192-cb8f7784fc58");
 
         assertThat(pet).isEqualTo(pet);
     }
