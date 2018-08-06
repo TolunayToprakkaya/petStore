@@ -48,7 +48,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @TestPropertySource(locations = "classpath:application-integrationtest.properties")
 @WebMvcTest(value = UserController.class, secure = false)
-public class UserControllerIntegrationTest {
+public class UserControllerTest {
 
     @Autowired
     MockMvc mockMvc;
@@ -76,12 +76,12 @@ public class UserControllerIntegrationTest {
     public void noDataTest() throws Exception{
         List<User> users = userService.findAll();
 
-        assertThat(users).isEmpty();
+        assertThat(users.size(), is(0));
     }
 
     @Test
     public void findAllTest() throws Exception{
-        List<User> users = userService.findAll();
+        List<User> users = new ArrayList<User>();
         users.add(user);
 
         assertThat(users.size(), is(1));

@@ -25,7 +25,7 @@ import static org.assertj.core.api.Assertions.*;
 @RunWith(SpringRunner.class)
 @TestPropertySource(locations = "classpath:application-integrationtest.properties")
 @WebMvcTest(value = PetController.class, secure = false)
-public class PetControllerIntegrationTest {
+public class PetControllerTest {
 
     @Autowired
     MockMvc mockMvc;

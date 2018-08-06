@@ -23,7 +23,7 @@ import java.util.Optional;
 @RunWith(SpringRunner.class)
 @TestPropertySource(locations = "classpath:application-integrationtest.properties")
 @WebMvcTest(value = OrderController.class, secure = false)
-public class OrderControllerIntegrationTest {
+public class OrderControllerTest {
 
     @Autowired
     MockMvc mockMvc;
