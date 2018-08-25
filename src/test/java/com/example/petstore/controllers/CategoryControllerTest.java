@@ -3,6 +3,7 @@ package com.example.petstore.controllers;
 import com.example.petstore.controllers.unit.CategoryFactory;
 import com.example.petstore.factory.JsonFileLoader;
 import com.example.petstore.models.Category;
+import com.example.petstore.rest.seedwork.dto.CategoryDto;
 import com.example.petstore.services.CategoryService;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
@@ -98,12 +99,11 @@ public class CategoryControllerTest{
 
     @Test
     public void testSave() throws Exception{
-        RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/categories").accept(MediaType.ALL);
+        RequestBuilder requestBuilder = MockMvcRequestBuilders.post("/categories").accept(MediaType.APPLICATION_JSON);
 
         Category category = categoryFactory.saveCategory();
 
         when(categoryService.save(category)).thenReturn(category);
-
 
         MvcResult result = mockMvc.perform(requestBuilder).andReturn();
         MockHttpServletResponse response = result.getResponse();

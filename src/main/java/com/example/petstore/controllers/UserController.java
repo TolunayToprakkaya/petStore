@@ -24,6 +24,7 @@ public class UserController {
 
     //Find All
     @RequestMapping(method = RequestMethod.GET)
+    @CrossOrigin(origins = "http://localhost:3000")
     public List<User> findAll(){
         return userService.findAll();
     }

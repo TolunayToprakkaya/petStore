@@ -1,6 +1,7 @@
 package com.example.petstore.services;
 
 import com.example.petstore.models.Category;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;

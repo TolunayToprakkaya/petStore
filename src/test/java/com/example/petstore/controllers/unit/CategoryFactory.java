@@ -24,7 +24,7 @@ public class CategoryFactory {
         return categories;
     }
 
-    public Category saveCategory(){
+    public static Category saveCategory(){
 
         Category category = new Category();
 
