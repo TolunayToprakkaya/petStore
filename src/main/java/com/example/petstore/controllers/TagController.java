@@ -32,12 +32,14 @@ public class TagController {
 
     //Save
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @CrossOrigin(origins = "http://localhost:3000")
     public void save(@RequestBody Tag tag){
         tagService.save(tag);
     }
 
     //Update
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    @CrossOrigin(origins = "http://localhost:3000")
     public void update(@RequestBody Tag tag){
         tagService.update(tag);
     }
@@ -50,6 +52,7 @@ public class TagController {
 
     //Delete
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    @CrossOrigin(origins = "http://localhost:3000")
     public void delete(@PathVariable String id){
         tagService.delete(id);
     }

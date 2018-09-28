@@ -1,5 +1,5 @@
-INSERT INTO T_USER (id, username, firstname, lastname, email, password, phone, status) VALUES ('EC444374-A6D9-4B78-BB4A-A26FB3B90D28', 'zaferfatih', 'zafer', 'fatih', 'zaferfatih@gmail.com', 'qwe123', '0630331942', '1');
-INSERT INTO T_USER (id, username, firstname, lastname, email, password, phone, status) VALUES ('cee9a576-4722-11e8-842f-0ed5f89f718b', 'tolunaytoprakkaya', 'tolunay', 'toprakkaya', 'tolunaytoprakkaya@gmail.com', 'tt123', '0630331947', '1');
+INSERT INTO T_USER (id, username, firstname, lastname, email, password, phone, status) VALUES ('EC444374-A6D9-4B78-BB4A-A26FB3B90D28', 'zaferfatih', 'zafer', 'fatih', 'zaferfatih@gmail.com', 'qwe123', '0630331942', 0);
+INSERT INTO T_USER (id, username, firstname, lastname, email, password, phone, status) VALUES ('cee9a576-4722-11e8-842f-0ed5f89f718b', 'tolunaytoprakkaya', 'tolunay', 'toprakkaya', 'tolunaytoprakkaya@gmail.com', 'tt123', '0630331947', 1);
 
 INSERT INTO T_CATEGORY (id, name) VALUES ('cee9aa58-4722-11e8-842f-0ed5f89f718b', 'Cat');
 INSERT INTO T_CATEGORY (id, name) VALUES ('cee9abc0-4722-11e8-842f-0ed5f89f718b', 'Dog');

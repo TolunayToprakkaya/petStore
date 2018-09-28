@@ -1,5 +1,6 @@
 package com.example.petstore.models;
 
+import com.example.petstore.models.enums.UserStatus;
 import com.example.petstore.models.seedwork.AbstractEntity;
 
 import javax.persistence.*;
@@ -27,7 +28,7 @@ public class User extends AbstractEntity{
     private String phone;
 
     @Column(name = "status")
-    private Integer status;
+    private UserStatus status;
 
     public String getUsername() {
         return username;
@@ -71,10 +72,10 @@ public class User extends AbstractEntity{
         this.phone = phone;
     }
 
-    public Integer getStatus() {
+    public UserStatus getStatus() {
         return status;
     }
-    public void setStatus(Integer status) {
+    public void setStatus(UserStatus status) {
         this.status = status;
     }
 

@@ -32,12 +32,14 @@ public class PetController {
 
     //Save
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @CrossOrigin(origins = "http://localhost:3000")
     public void save(@RequestBody Pet pet){
         petService.save(pet);
     }
 
     //Update
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    @CrossOrigin(origins = "http://localhost:3000")
     public void update(@RequestBody Pet pet){
         petService.update(pet);
     }
@@ -50,6 +52,7 @@ public class PetController {
 
     //Delete
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    @CrossOrigin(origins = "http://localhost:3000")
     public void delete(@PathVariable String id){
         petService.delete(id);
     }

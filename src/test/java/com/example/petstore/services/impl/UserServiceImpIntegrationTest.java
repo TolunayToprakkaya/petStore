@@ -43,7 +43,6 @@ public class UserServiceImpIntegrationTest {
         user.setEmail("hasanersoy@gmail.com");
         user.setPassword("he123");
         user.setPhone("92579731");
-        user.setStatus(1);
         /*
         users = new ArrayList<>();
         users.add(user);

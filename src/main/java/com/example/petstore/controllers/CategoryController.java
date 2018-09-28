@@ -32,12 +32,14 @@ public class CategoryController {
 
     //Save
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @CrossOrigin(origins = "http://localhost:3000")
     public void save(@RequestBody Category category){
         categoryService.save(category);
     }
 
     //Update
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    @CrossOrigin(origins = "http://localhost:3000")
     public void update(@RequestBody Category category){
         categoryService.update(category);
     }
@@ -50,6 +52,7 @@ public class CategoryController {
 
     //Delete
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    @CrossOrigin(origins = "http://localhost:3000")
     public void delete(@PathVariable String id){
         categoryService.delete(id);
     }

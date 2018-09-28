@@ -69,7 +69,6 @@ public class UserControllerTest {
         user.setEmail("canavar@gmail.com");
         user.setPassword("ca123");
         user.setPhone("05486241");
-        user.setStatus(1);
     }
 
     @Test
