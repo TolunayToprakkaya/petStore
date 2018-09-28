@@ -19,6 +19,7 @@ public class TagController {
 
     //Find All
     @RequestMapping(method = RequestMethod.GET)
+    @CrossOrigin(origins = "http://localhost:3000")
     public List<Tag> findAll(){
         return tagService.findAll();
     }

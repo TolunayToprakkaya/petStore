@@ -39,12 +39,14 @@ public class UserController {
 
     //Save
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @CrossOrigin(origins = "http://localhost:3000")
     public void save(@RequestBody User user){
         userService.save(user);
     }
 
     //Update
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    @CrossOrigin(origins = "http://localhost:3000")
     public void update(@RequestBody User user){
         userService.update(user);
     }
@@ -57,6 +59,7 @@ public class UserController {
 
     //Delete
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    @CrossOrigin(origins = "http://localhost:3000")
     public void delete(@PathVariable String id){
         userService.delete(id);
     }

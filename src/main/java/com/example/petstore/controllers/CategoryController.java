@@ -19,6 +19,7 @@ public class CategoryController {
 
     //Find All
     @RequestMapping(method = RequestMethod.GET)
+    @CrossOrigin(origins = "http://localhost:3000")
     public List<Category> findAll(){
         return categoryService.findAll();
     }

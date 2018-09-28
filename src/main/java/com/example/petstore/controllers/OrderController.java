@@ -17,6 +17,7 @@ public class OrderController {
 
     //Find All
     @RequestMapping(method = RequestMethod.GET)
+    @CrossOrigin(origins = "http://localhost:3000")
     public List<Order> findAll(){
         return orderService.findAll();
     }

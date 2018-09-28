@@ -19,6 +19,7 @@ public class PetController {
 
     //Find All
     @RequestMapping(method = RequestMethod.GET)
+    @CrossOrigin(origins = "http://localhost:3000")
     public List<Pet> findAll(){
         return petService.findAll();
     }
