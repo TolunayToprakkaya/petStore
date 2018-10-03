@@ -115,33 +115,50 @@ export class PetList extends React.Component{
             return <p>Loading...</p>;
         }
 
+        var cardStyle = {
+          width: 18+'rem',
+          marginBottom: 10+'px'
+        };
+        var searchStyle = {
+            width: 250+'px',
+            float: 'right'
+        }
+
         return(
-            <div>
-                <table className="table table-striped">
-                    <thead>
-                    <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Photo Url</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Action</th>
-                        <th scope="col"><button type="button" className="btn btn-success" data-toggle="modal" data-target="#addModal"><FontAwesomeIcon icon="plus"/> Add</button></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {findAll.map((pet) =>
-                        <tr key={pet.id}>
-                            <td>{pet.id}</td>
-                            <td id="txt_input">{pet.name}</td>
-                            <td>{pet.photoUrl}</td>
-                            <td>{pet.status}</td>
-                            <td><button type="button" className="btn btn-primary" onClick={this.handleUpdate.bind(this, pet.id)} data-toggle="modal" data-target="#updateModal"><FontAwesomeIcon icon="edit"/> Edit</button>
-                                &nbsp;<button type="button" className="btn btn-danger" onClick={this.deletePet.bind(this, pet.id)} data-toggle="modal" data-target="#deleteModal"><FontAwesomeIcon icon="trash"/> Delete</button></td>
-                            <td></td>
-                        </tr>
-                    )}
-                    </tbody>
-                </table>
+            <div className={"container-fluid"}>
+                <div className={"row"}>
+                    <div className={"col-md-12"}>
+                        <nav className="navbar navbar-expand-lg navbar-white bg-white">
+                            <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul className="navbar-nav mr-auto">
+                                    <li className="nav-item">
+                                        <button type="button" className="btn btn-success" data-toggle="modal" data-target="#addModal"><FontAwesomeIcon icon="plus"/> Add</button>
+                                    </li>
+                                </ul>
+                                <form className="form-inline my-2 my-lg-0">
+                                    <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
+                                    <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                                </form>
+                            </div>
+                        </nav>
+                        <div className={"row"}>
+                            {findAll.map((pet) =>
+                                <div className={"col-md-2 d-flex align-items-stretch"} key={pet.id}>
+                                    <div className="card" style={cardStyle}>
+                                        <img className="card-img-top" src={pet.photoUrl} alt="Card image cap"/>
+                                        <div className="card-body">
+                                            <h5 className="card-title">{pet.name}</h5>
+                                            <p className="card-text">{pet.status}</p>
+                                            <button type="button" className="btn btn-primary" onClick={this.handleUpdate.bind(this, pet.id)} data-toggle="modal" data-target="#updateModal"><FontAwesomeIcon icon="edit"/> Edit</button>
+                                            &nbsp;<button type="button" className="btn btn-danger" onClick={this.deletePet.bind(this, pet.id)} data-toggle="modal" data-target="#deleteModal"><FontAwesomeIcon icon="trash"/> Delete</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                </div>
+
 
                 <div className="modal fade" id="addModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div className="modal-dialog" role="document">
@@ -187,7 +204,6 @@ export class PetList extends React.Component{
                         </div>
                     </div>
                 </div>
-
 
 
                 <div className="modal fade" id="updateModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
