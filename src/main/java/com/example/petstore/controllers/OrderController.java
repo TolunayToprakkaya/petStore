@@ -30,12 +30,14 @@ public class OrderController {
 
     //Save
     @RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @CrossOrigin(origins = "http://localhost:3000")
     public void save(@RequestBody Order order){
         orderService.save(order);
     }
 
     //Update
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    @CrossOrigin(origins = "http://localhost:3000")
     public void update(@RequestBody Order order){
         orderService.save(order);
     }
@@ -47,7 +49,8 @@ public class OrderController {
     }
 
     //Delete
-    @RequestMapping(value = "/{orderId}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    @CrossOrigin(origins = "http://localhost:3000")
     public void delete(@PathVariable String id){
         orderService.delete(id);
     }
