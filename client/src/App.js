@@ -12,12 +12,10 @@ import {CategoryList} from "./list/CategoryList";
 import {TagList} from "./list/TagList";
 import {OrderList} from "./list/OrderList";
 
-import {Test} from "./inc/Test";
-
 import {library} from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faPlus, faTrash, faEdit, faSave, faTimesCircle} from "@fortawesome/free-solid-svg-icons";
-library.add(faPlus, faTrash, faEdit, faSave, faTimesCircle);
+import {faPlus, faTrash, faEdit, faSave, faTimesCircle, faShoppingCart} from "@fortawesome/free-solid-svg-icons";
+library.add(faPlus, faTrash, faEdit, faSave, faTimesCircle, faShoppingCart);
 
 class App extends Component {
     constructor(props){
@@ -34,7 +32,6 @@ class App extends Component {
                     <Route path="/categoryList" component={CategoryList}/>
                     <Route path="/tagList" component={TagList}/>
                     <Route path="/orderList" component={OrderList}/>
-                    <Route path="/test" component={Test}/>
                 </div>
                 <Footer/>
             </div>

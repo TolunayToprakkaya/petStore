@@ -58,9 +58,6 @@ export class Header extends React.Component{
                         <li className={"nav-item"}>
                             <NavLink to="/orderList" className={"nav-link"} >Order</NavLink>
                         </li>
-                        <li className={"nav-item"}>
-                            <NavLink to="/test" className={"nav-link"} >Test</NavLink>
-                        </li>
                     </ul>
                 </div>
             </nav>

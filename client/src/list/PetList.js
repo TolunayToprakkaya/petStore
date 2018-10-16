@@ -14,6 +14,7 @@ export class PetList extends React.Component{
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleOrder = this.handleOrder.bind(this);
 
         this.handleUpdate = this.handleUpdate.bind(this);
     }
@@ -22,7 +23,8 @@ export class PetList extends React.Component{
         this.setState({isLoading: true});
         fetch('http://localhost:8080/api/v1/pets')
             .then(response => response.json())
-            .then(data => this.setState({findAll: data, isLoading: false}));
+            .then(data => this.setState({findAll: data, isLoading: false}))
+            .catch(error => console.log(error));
     }
 
     handleChange(event) {
@@ -36,10 +38,11 @@ export class PetList extends React.Component{
 
     handleSubmit(event) {
         event.preventDefault();
-        var newPet = {id: this.state.id,
-            name: this.state.name,
+        var newPet = {name: this.state.name,
             photoUrl: this.state.photoUrl,
-            status: this.state.status};
+            status: this.state.status,
+            category: this.state.category,
+            tag: this.state.tag};
         this.createPet(newPet);
         window.location.reload();
     }
@@ -64,11 +67,14 @@ export class PetList extends React.Component{
                 break;
             }
         }
+        console.log(key);
         //alert(key.username);
         $('#id').val(key.id);
         $('#name').val(key.name);
         $('#photoUrl').val(key.photoUrl);
         $('#status').val(key.status);
+        $('#category').val(key.category);
+        $('#tag').val(key.tag);
 
         //alert($(".table-striped tbody").find("tr").eq(_tr).html());
 
@@ -78,6 +84,8 @@ export class PetList extends React.Component{
             key.name=$('#name').val();
             key.photoUrl=$('#photoUrl').val();
             key.status=$('#status').val();
+            key.category=$('#category').val();
+            key.tag=$('#tag').val();
 
             event.stopPropagation();
             console.log('pet ::', key);
@@ -109,6 +117,45 @@ export class PetList extends React.Component{
     }
 
 
+    handleOrder(id) {
+        console.log('id ::', id);
+        var timeStamp = Math.floor(Date.now());
+        var key;
+        //var _tr=-1;
+        for(var ii=0;ii<this.state.findAll.length;ii++) {
+            if(this.state.findAll[ii].id === id) {
+                key = this.state.findAll[ii];
+                //_tr=ii;
+                break;
+            }
+        }
+        //alert(key.username);
+        $('#nameOrder').val(key.name);
+        $('#photoUrlOrder').val(key.photoUrl);
+        $('#statusOrder').val('approved');
+        $('#shipDate').val(timeStamp);
+
+
+        $("#orderBtn").click(function (event) {
+            key.quantity=$('#quantity').val();
+            key.shipDate=$('#shipDate').val();
+            key.status=$('#statusOrder').val();
+
+
+            event.stopPropagation();
+            console.log('key ::', key);
+            fetch('http://localhost:8080/api/v1/order', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(key)
+            });
+            window.location.reload();
+        });
+
+    }
+
     render(){
         const {findAll, isLoading} = this.state;
         if(isLoading){
@@ -119,10 +166,6 @@ export class PetList extends React.Component{
           width: 18+'rem',
           marginBottom: 10+'px'
         };
-        var searchStyle = {
-            width: 250+'px',
-            float: 'right'
-        }
 
         return(
             <div className={"container-fluid"}>
@@ -146,9 +189,12 @@ export class PetList extends React.Component{
                                 <div className={"col-md-2 d-flex align-items-stretch"} key={pet.id}>
                                     <div className="card" style={cardStyle}>
                                         <img className="card-img-top" src={pet.photoUrl} alt="Card image cap"/>
+                                        <button type="button" className="btn btn-success" onClick={this.handleOrder.bind(this, pet.id)} data-toggle="modal" data-target="#orderModal"><FontAwesomeIcon icon="shopping-cart"/> Order</button>
                                         <div className="card-body">
                                             <h5 className="card-title">{pet.name}</h5>
                                             <p className="card-text">{pet.status}</p>
+                                            <p className="card-text">Category: {pet.category}</p>
+                                            <p className="card-text">Tag: {pet.tag}</p>
                                             <button type="button" className="btn btn-primary" onClick={this.handleUpdate.bind(this, pet.id)} data-toggle="modal" data-target="#updateModal"><FontAwesomeIcon icon="edit"/> Edit</button>
                                             &nbsp;<button type="button" className="btn btn-danger" onClick={this.deletePet.bind(this, pet.id)} data-toggle="modal" data-target="#deleteModal"><FontAwesomeIcon icon="trash"/> Delete</button>
                                         </div>
@@ -159,6 +205,52 @@ export class PetList extends React.Component{
                     </div>
                 </div>
 
+
+                <div className="modal fade" id="orderModal" tabIndex="-1" role="dialog" aria-labelledby="exampleOrderModalLabel" aria-hidden="true">
+                    <div className="modal-dialog" role="document">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title" id="exampleOrderModalLabel">Order Pet</h5>
+                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div className="modal-body">
+                                <form>
+                                    <div className={"form-group"}>
+                                        <div className="col-md-12">
+                                            <input type="text" className="form-control" placeholder="name" name="nameOrder" id="nameOrder" disabled/>
+                                        </div>
+                                    </div>
+                                    <div className={"form-group"}>
+                                        <div className="col-md-12">
+                                            <input type="text" className="form-control" placeholder="photoUrl" name="photoUrlOrder" id="photoUrlOrder" disabled/>
+                                        </div>
+                                    </div>
+                                    <div className={"form-group"}>
+                                        <div className="col-md-12">
+                                            <input type="text" className="form-control" placeholder="status" name="statusOrder" id="statusOrder" disabled/>
+                                        </div>
+                                    </div>
+                                    <div className={"form-group"}>
+                                        <div className="col-md-12">
+                                            <input type="text" className="form-control" placeholder="quantity" name="quantity" id="quantity" onChange={this.handleChange}/>
+                                        </div>
+                                    </div>
+                                    <div className={"form-group"}>
+                                        <div className="col-md-12">
+                                            <input type="hidden" className="form-control" placeholder="shipDate" name="shipDate" id="shipDate" disabled/>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-secondary" data-dismiss="modal"><FontAwesomeIcon icon="times-circle"/> Close</button>
+                                <button className="btn btn-success" type='button' id={"orderBtn"}><FontAwesomeIcon icon="shopping-cart"/> Order</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <div className="modal fade" id="addModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div className="modal-dialog" role="document">
@@ -171,12 +263,6 @@ export class PetList extends React.Component{
                             </div>
                             <div className="modal-body">
                                 <form>
-                                    <div className={"form-group"}>
-                                        <div className="col-md-12">
-                                            <input type="text" className="form-control" placeholder="id" name="id"
-                                                   onChange={this.handleChange}/>
-                                        </div>
-                                    </div>
                                     <div className={"form-group"}>
                                         <div className="col-md-12">
                                             <input type="text" className="form-control" placeholder="name" name="name"
@@ -195,6 +281,18 @@ export class PetList extends React.Component{
                                                    onChange={this.handleChange}/>
                                         </div>
                                     </div>
+                                    <div className={"form-group"}>
+                                        <div className="col-md-12">
+                                            <input type="text" className="form-control" placeholder="category" name="category"
+                                                   onChange={this.handleChange}/>
+                                        </div>
+                                    </div>
+                                    <div className={"form-group"}>
+                                        <div className="col-md-12">
+                                            <input type="text" className="form-control" placeholder="tag" name="tag"
+                                                   onChange={this.handleChange}/>
+                                        </div>
+                                    </div>
                                 </form>
                             </div>
                             <div className="modal-footer">
@@ -204,7 +302,6 @@ export class PetList extends React.Component{
                         </div>
                     </div>
                 </div>
-
 
                 <div className="modal fade" id="updateModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div className="modal-dialog" role="document">
@@ -237,6 +334,16 @@ export class PetList extends React.Component{
                                             <input type="text" className="form-control" placeholder="status" name="status" id="status"/>
                                         </div>
                                     </div>
+                                    <div className={"form-group"}>
+                                        <div className="col-md-12">
+                                            <input type="text" className="form-control" placeholder="category" name="category" id="category"/>
+                                        </div>
+                                    </div>
+                                    <div className={"form-group"}>
+                                        <div className="col-md-12">
+                                            <input type="text" className="form-control" placeholder="tag" name="tag" id="tag"/>
+                                        </div>
+                                    </div>
                                 </form>
                             </div>
                             <div className="modal-footer">
@@ -246,7 +353,6 @@ export class PetList extends React.Component{
                         </div>
                     </div>
                 </div>
-
 
                 <div className="modal fade" id="deleteModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div className="modal-dialog" role="document">

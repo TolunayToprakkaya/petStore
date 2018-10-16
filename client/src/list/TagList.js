@@ -36,8 +36,7 @@ export class TagList extends React.Component{
 
     handleSubmit(event) {
         event.preventDefault();
-        var newTag = {id: this.state.id,
-            name: this.state.name};
+        var newTag = {name: this.state.name};
         this.createTag(newTag);
         window.location.reload();
     }
@@ -144,12 +143,6 @@ export class TagList extends React.Component{
                             </div>
                             <div className="modal-body">
                                 <form>
-                                    <div className={"form-group"}>
-                                        <div className="col-md-12">
-                                            <input type="text" className="form-control" placeholder="id" name="id"
-                                                   onChange={this.handleChange}/>
-                                        </div>
-                                    </div>
                                     <div className={"form-group"}>
                                         <div className="col-md-12">
                                             <input type="text" className="form-control" placeholder="name" name="name"

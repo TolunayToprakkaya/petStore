@@ -37,8 +37,7 @@ export class UserList extends React.Component{
 
     handleSubmit(event) {
         event.preventDefault();
-        var newUser = {id: this.state.id,
-            username: this.state.username,
+        var newUser = {username: this.state.username,
             firstname: this.state.firstname,
             lastname: this.state.lastname,
             email: this.state.email,
@@ -167,6 +166,7 @@ export class UserList extends React.Component{
                     </tbody>
                 </table>
 
+
                 <div className="modal fade" id="addModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div className="modal-dialog" role="document">
                         <div className="modal-content">
@@ -178,12 +178,6 @@ export class UserList extends React.Component{
                             </div>
                             <div className="modal-body">
                                 <form>
-                                    <div className={"form-group"}>
-                                        <div className="col-md-12">
-                                            <input type="text" className="form-control" placeholder="id" name="id"
-                                                   onChange={this.handleChange}/>
-                                        </div>
-                                    </div>
                                     <div className={"form-group"}>
                                         <div className="col-md-12">
                                             <input type="text" className="form-control" placeholder="username" name="username"
@@ -235,8 +229,6 @@ export class UserList extends React.Component{
                         </div>
                     </div>
                 </div>
-
-
 
                 <div className="modal fade" id="updateModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div className="modal-dialog" role="document">
@@ -298,7 +290,6 @@ export class UserList extends React.Component{
                         </div>
                     </div>
                 </div>
-
 
                 <div className="modal fade" id="deleteModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div className="modal-dialog" role="document">

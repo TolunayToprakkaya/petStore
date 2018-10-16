@@ -36,8 +36,7 @@ export class CategoryList extends React.Component{
 
     handleSubmit(event) {
         event.preventDefault();
-        var newCategory = {id: this.state.id,
-            name: this.state.name};
+        var newCategory = {name: this.state.name};
         this.createCategory(newCategory);
         window.location.reload();
     }
@@ -144,12 +143,6 @@ export class CategoryList extends React.Component{
                             </div>
                             <div className="modal-body">
                                 <form>
-                                    <div className={"form-group"}>
-                                        <div className="col-md-12">
-                                            <input type="text" className="form-control" placeholder="id" name="id"
-                                                   onChange={this.handleChange}/>
-                                        </div>
-                                    </div>
                                     <div className={"form-group"}>
                                         <div className="col-md-12">
                                             <input type="text" className="form-control" placeholder="name" name="name"
